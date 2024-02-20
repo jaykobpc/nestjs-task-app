@@ -1,3 +1,4 @@
+import { Labels } from 'src/labels/labels.entity';
 import { Task } from 'src/tasks/task.entity';
 import {
   Column,
@@ -36,4 +37,7 @@ export class User {
 
   @OneToMany(() => Task, (task) => task.user, { eager: true })
   task: Task[];
+
+  @OneToMany(() => Labels, (label) => label.user, { eager: true })
+  label: Labels[];
 }

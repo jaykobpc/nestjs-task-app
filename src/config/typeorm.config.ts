@@ -2,6 +2,7 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { User } from 'src/auth/user.entity';
 import { Task } from 'src/tasks/task.entity';
 import * as dotenv from 'dotenv';
+import { Labels } from 'src/labels/labels.entity';
 
 dotenv.config({
   path: '../.env',
@@ -14,7 +15,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   username: process.env.DB_USERNAME || 'root',
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_DATABASE || 'taskmanagement',
-  entities: [Task, User],
+  entities: [Task, User, Labels],
   synchronize: process.env.APP_ENV !== 'production',
   logging: process.env.APP_ENV !== 'production',
   migrations: [],

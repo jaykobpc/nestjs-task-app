@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { TaskStatus } from './task-status.enum';
 import { User } from 'src/auth/user.entity';
+import { Labels } from 'src/labels/labels.entity';
 
 @Entity('task')
 export class Task {
@@ -47,6 +48,14 @@ export class Task {
   })
   userId: number;
 
+  @Column({
+    nullable: false,
+  })
+  labelId: number;
+
   @ManyToOne(() => User, (user) => user.task)
   user: User;
+
+  @ManyToOne(() => Labels, (label) => label.task)
+  label: Labels;
 }
